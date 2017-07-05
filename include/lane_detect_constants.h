@@ -25,10 +25,17 @@ namespace lanedetectconstants {
 							cv::Point(0,0),
 							cv::Point(0,0),
 							cv::Point(0,0) };
-							 
+							
+	//ROI											//Relative to image size, must change
+	std::vector<std::vector<cv::Point>> k_roipoints{{ cv::Point(0,480),
+													  cv::Point(0,400),
+													  cv::Point(360,240),
+													  cv::Point(440,240),
+													  cv::Point(800,400),
+													  cv::Point(800,480) }};
+													 
 	//Image evaluation
 	float k_contrastscalefactor{ 0.75f };
-	uint16_t k_ystartposition{ 240 };
 	
 	//Line filtering
 	float k_maxvanishingpointangle{ 18.0f };

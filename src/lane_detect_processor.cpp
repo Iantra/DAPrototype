@@ -14,7 +14,6 @@
 //Standard libraries
 #include <iostream>
 #include <ctime>
-#include <sys/time.h>
 #include <deque>
 #include <algorithm>
 #include <math.h>
@@ -49,48 +48,26 @@ void ProcessImage ( cv::Mat& image,
 //-----------------------------------------------------------------------------------------
 //Image manipulation
 //-----------------------------------------------------------------------------------------
-	//Create mat of ROI to improve performance
-	cv::Mat houghlinesmat{ image.size(), image.type(), cv::Scalar(0) };
-	image( cv::Rect(0,
-					lanedetectconstants::k_ystartposition,
-					image.cols,
-					image.rows -
-					lanedetectconstants::k_ystartposition)).copyTo(houghlinesmat(cv::Rect(0,
-					lanedetectconstants::k_ystartposition,
-					image.cols,
-					image.rows -
-					lanedetectconstants::k_ystartposition)));
+	//Extract ROI
+	cv::Mat houghlinesmat{ ExtractROI( image ) };
 					
 	//Change to grayscale
 	cv::cvtColor( houghlinesmat, houghlinesmat, CV_BGR2GRAY );
 	
 	//Blur to reduce noise
-    cv::blur( houghlinesmat(cv::Rect(0,
-									 lanedetectconstants::k_ystartposition,
-									 houghlinesmat.cols,
-									 houghlinesmat.rows -
-									 lanedetectconstants::k_ystartposition)),
-			  houghlinesmat(cv::Rect(0,
-									 lanedetectconstants::k_ystartposition,
-									 houghlinesmat.cols,
-									 houghlinesmat.rows -
-									 lanedetectconstants::k_ystartposition)),
-			  cv::Size(3,3) );
+    cv::blur( houghlinesmat, houghlinesmat, cv::Size(3,3) );
 	
 	//Auto threshold values for canny edge detection
 	cv::Scalar mean;     
 	cv::Scalar std;
-	cv::meanStdDev( houghlinesmat(cv::Rect(0,
-										   lanedetectconstants::k_ystartposition,
-										   houghlinesmat.cols,
-										   houghlinesmat.rows -
-										   lanedetectconstants::k_ystartposition)),
-					mean,
-					std );
+	cv::meanStdDev( houghlinesmat, mean, std );
 	double lowerthreshold{ lanedetectconstants::k_contrastscalefactor * std[0] };
 	
 	//Canny edge detection
     cv::Canny( houghlinesmat, houghlinesmat, lowerthreshold, 3 * lowerthreshold );
+
+	//Trim canny (removes edges of ROI)
+	houghlinesmat = TrimROI(houghlinesmat, 2);
 
 //-----------------------------------------------------------------------------------------
 //Use Probalistic Hough Lines
@@ -175,6 +152,47 @@ void ProcessImage ( cv::Mat& image,
 			   std::end(bestpolygon),
 			   std::begin(polygon) );
 	return;
+}
+
+/*****************************************************************************************/	
+cv::Mat ExtractROI( const cv::Mat& image )
+{
+	//Create ROI mask
+	cv::Mat maskmat{ image.size(), CV_8UC1, cv::Scalar(0) };
+	cv::Mat roimat{ image.size(), image.type(), cv::Scalar::all(0) };
+	drawContours( maskmat,
+				  lanedetectconstants::k_roipoints,
+				  0,
+				  cv::Scalar(255),
+				  CV_FILLED,
+				  8 );
+	//Copy original image within mask
+	image.copyTo( roimat, maskmat );
+	return roimat;
+}
+
+/*****************************************************************************************/	
+cv::Mat TrimROI( const cv::Mat& image,
+				 const int pixels )
+{
+	//Create ROI mask
+	cv::Mat maskmat{ image.size(), CV_8UC1, cv::Scalar(0) };
+	cv::Mat roimat{ image.size(), image.type(), cv::Scalar::all(0) };
+	drawContours( maskmat,
+				  lanedetectconstants::k_roipoints,
+				  0,
+				  cv::Scalar(255),
+				  CV_FILLED,
+				  8 );
+	//Create eroding element
+	cv::Mat element{ cv::getStructuringElement( cv::MORPH_RECT,//MORPH_CROSS//MORPH_ELLIPSE
+												cv::Size( 2 * pixels + 1, 2 * pixels  +1 ),
+												cv::Point( pixels, pixels ) ) };
+	//Erode mask
+	cv::erode( maskmat, maskmat, element );
+	//Copy original image within eroded mask
+	image.copyTo( roimat, maskmat );
+	return roimat;
 }
 
 /*****************************************************************************************/	
