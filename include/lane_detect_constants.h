@@ -35,6 +35,10 @@ namespace lanedetectconstants {
 													  cv::Point(800,480) }};
 													 
 	//Image evaluation
+	cv::Scalar k_lowerwhitethreshold{ 0, 0, 80 };
+	cv::Scalar k_upperwhitethreshold{ 180, 200, 255 };
+	cv::Scalar k_loweryellowthreshold{ 35, 50, 50 };
+	cv::Scalar k_upperyellowthreshold{ 85, 255, 255 };
 	float k_contrastscalefactor{ 0.75f };
 	
 	//Line filtering

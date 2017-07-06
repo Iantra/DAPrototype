@@ -40,7 +40,7 @@ struct PolygonDifferences {
 cv::Mat ExtractROI( const cv::Mat& image );
 cv::Mat TrimROI( const cv::Mat& image,
 				 const int pixels );
-
+cv::Mat ApplyThreshold( const cv::Mat& image );
 bool CheckAngle( const cv::Point center,
 				 const float angle );
 void EvaluateLine( const cv::Vec4i& line,

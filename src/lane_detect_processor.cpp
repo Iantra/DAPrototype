@@ -50,6 +50,9 @@ void ProcessImage ( cv::Mat& image,
 //-----------------------------------------------------------------------------------------
 	//Extract ROI
 	cv::Mat houghlinesmat{ ExtractROI( image ) };
+	
+	//Apply threshold
+	houghlinesmat = ApplyThreshold( houghlinesmat );
 					
 	//Change to grayscale
 	cv::cvtColor( houghlinesmat, houghlinesmat, CV_BGR2GRAY );
@@ -195,7 +198,34 @@ cv::Mat TrimROI( const cv::Mat& image,
 	return roimat;
 }
 
-/*****************************************************************************************/	
+/*****************************************************************************************/
+cv::Mat ApplyThreshold( const cv::Mat& image )
+{
+	//HSV mat
+	cv::Mat hsvmat{ image.size(), image.type(), cv::Scalar::all(0) };
+	cv::cvtColor( image, hsvmat, CV_BGR2HSV );
+	//Create white mask
+	cv::Mat whitemask{ image.size(), CV_8UC1, cv::Scalar(0) };
+	cv::inRange( image,
+				 lanedetectconstants::k_lowerwhitethreshold,
+				 lanedetectconstants::k_upperwhitethreshold,
+				 whitemask );
+	//Create yellow mask
+	cv::Mat yellowmask{ image.size(), CV_8UC1, cv::Scalar(0) };
+	cv::inRange( image,
+				 lanedetectconstants::k_loweryellowthreshold,
+				 lanedetectconstants::k_upperyellowthreshold,
+				 yellowmask );
+	//Combine masks
+	cv::Mat mask{ image.size(), image.type(), cv::Scalar::all(0) };
+	cv::bitwise_or( whitemask, yellowmask, mask );
+	//Copy original image within mask
+	cv::Mat result{ image.size(), image.type(), cv::Scalar::all(0) };
+	image.copyTo( result, mask );
+	return result;
+}
+
+/*****************************************************************************************/
 bool CheckAngle( const cv::Point center,
 				 const float angle )
 {
@@ -217,7 +247,7 @@ bool CheckAngle( const cv::Point center,
 	}
 }
 
-/*****************************************************************************************/	
+/*****************************************************************************************/
 void EvaluateLine( const cv::Vec4i& line,
 				   std::vector<EvaluatedLine>& evaluatedlines )
 {	
