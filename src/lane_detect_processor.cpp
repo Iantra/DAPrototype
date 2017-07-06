@@ -203,7 +203,7 @@ cv::Mat ApplyThreshold( const cv::Mat& image )
 {
 	//HSV mat
 	cv::Mat hsvmat{ image.size(), image.type(), cv::Scalar::all(0) };
-	cv::cvtColor( image, hsvmat, CV_BGR2HSV );
+	cv::cvtColor( image, hsvmat, CV_BGR2HLS );
 	//Create white mask
 	cv::Mat whitemask{ image.size(), CV_8UC1, cv::Scalar(0) };
 	cv::inRange( image,
