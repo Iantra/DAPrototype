@@ -55,7 +55,7 @@ void ProcessImage ( cv::Mat& image,
 	houghlinesmat = ApplyThreshold( houghlinesmat );
 					
 	//Change to grayscale
-	cv::cvtColor( houghlinesmat, houghlinesmat, CV_BGR2GRAY );
+	cv::cvtColor( houghlinesmat, houghlinesmat, cv::COLOR_BGR2GRAY );
 	
 	//Blur to reduce noise
     cv::blur( houghlinesmat, houghlinesmat, cv::Size(3,3) );
@@ -167,7 +167,7 @@ cv::Mat ExtractROI( const cv::Mat& image )
 				  lanedetectconstants::k_roipoints,
 				  0,
 				  cv::Scalar(255),
-				  CV_FILLED,
+				  cv::FILLED,
 				  8 );
 	//Copy original image within mask
 	image.copyTo( roimat, maskmat );
@@ -185,7 +185,7 @@ cv::Mat TrimROI( const cv::Mat& image,
 				  lanedetectconstants::k_roipoints,
 				  0,
 				  cv::Scalar(255),
-				  CV_FILLED,
+				  cv::FILLED,
 				  8 );
 	//Create eroding element
 	cv::Mat element{ cv::getStructuringElement( cv::MORPH_RECT,//MORPH_CROSS//MORPH_ELLIPSE
@@ -203,7 +203,7 @@ cv::Mat ApplyThreshold( const cv::Mat& image )
 {
 	//HSV mat
 	cv::Mat hsvmat{ image.size(), image.type(), cv::Scalar::all(0) };
-	cv::cvtColor( image, hsvmat, CV_BGR2HLS );
+	cv::cvtColor( image, hsvmat,cv::COLOR_BGR2HLS );
 	//Create white mask
 	cv::Mat whitemask{ image.size(), CV_8UC1, cv::Scalar(0) };
 	cv::inRange( image,

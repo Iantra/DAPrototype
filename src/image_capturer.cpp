@@ -38,9 +38,9 @@ void CaptureImageThread( cv::Mat *capture,
 	raspicam::RaspiCam_Cv Camera;
 
 	//Set properties
-	Camera.set( CV_CAP_PROP_FRAME_WIDTH, settings::cam::kpixwidth );
-	Camera.set( CV_CAP_PROP_FRAME_HEIGHT, settings::cam::kpixheight );
-	Camera.set( CV_CAP_PROP_FORMAT, CV_8UC3 );
+	Camera.set( cv::CAP_PROP_FRAME_WIDTH, settings::cam::kpixwidth );
+	Camera.set( cv::CAP_PROP_FRAME_HEIGHT, settings::cam::kpixheight );
+	Camera.set( cv::CAP_PROP_FORMAT, CV_8UC3 );
 
     //Open
 	if ( !Camera.open() ) {

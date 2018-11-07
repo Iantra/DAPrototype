@@ -81,7 +81,7 @@ void VideoWriterThread ( cv::Mat *orgimage,
 	StorageWorker storage{ queue,
 			               1,
 			               filepath,
-						   CV_FOURCC('D', 'I', 'V', 'X'),
+						   cv::VideoWriter::fourcc('D', 'I', 'V', 'X'),
 						   static_cast<double>(settings::cam::krecfps),
 						   size,
 						   true };
