@@ -19,7 +19,18 @@
 
 2. Install Dependencies
 	2.1 Install OpenCV (https://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html)
-	
+
+	sudo apt-get install build-essential
+	sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+	sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+	git clone https://github.com/Itseez/opencv.git
+	cd opencv
+	mkdir build
+	cd build
+	cmake -D CMAKE_BUILD_TYPE=Release -D CMAKE_INSTALL_PREFIX=/usr/local ..
+	make -j4
+	sudo make install
+
 	2.2 Install Raspicam:
 		git clone https://github.com/cedricve/raspicam .
 		cd raspicam
@@ -38,7 +49,7 @@
 	
 3. Install Nate Greco's DAPrototype
 	3.1 Get files:
-		git clone https://github.com/nategreco/DAPrototype
+		git clone https://github.com/Iantra/DAPrototype
 	
 	3.2 Build: 
 		cd DAPrototype
