@@ -1,0 +1,48 @@
+1. Set up LCD (Could be skipped if HDMI display is used (recommended))
+	1.1 Connect external HDMI monitor
+
+	1.2 Load NOOBS (V2.9) on SD card
+
+	1.3 Boot up and install Raspbian (V4.14)
+
+	--Step 1.4 only for Adafruit display, others might be different
+
+	1.4 Run the following commands and go through the setup process:
+		cd ~
+		wget https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/adafruit-pitft.sh
+		chmod +x adafruit-pitft.sh
+		sudo ./adafruit-pitft.sh
+
+	1.5 Reboot and confirm the display is working
+
+	At this point, developing on the display is possible, although not recommended (major PITA)
+
+2. Install Dependencies
+	2.1 Install OpenCV (https://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html)
+	
+	2.2 Install Raspicam:
+		git clone https://github.com/cedricve/raspicam .
+		cd raspicam
+		mkdir build
+		cd build
+		cmake ..
+		make
+		sudo make install
+		sudo ldconfig
+	
+	2.3 Install libGPS:
+		apt-get install libgps-dev
+
+	2.4 (?) Install WiringPi
+
+	
+3. Install Nate Greco's DAPrototype
+	3.1 Get files:
+		git clone https://github.com/nategreco/DAPrototype
+	
+	3.2 Build: 
+		cd DAPrototype
+		mkdir build
+		cd build
+		cmake .. -Draspicam_DIR=/usr/local/lib/cmake/
+		make
