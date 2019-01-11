@@ -55,17 +55,17 @@
 
 //3rd party libraries
 #include "opencv2/opencv.hpp"
-#include <libgpsmm.h>
+//#include <libgpsmm.h>
 
 //DAPrototype source files
 #include "display_handler.h"
-#include "gpio_handler.h"
-#include "gps_polling.h"
+//#include "gpio_handler.h"
+//#include "gps_polling.h"
 #include "image_capturer.h"
 #include "image_editor.h"
 #include "image_processor.h"
 #include "lane_detect_processor.h"
-#include "lidar_polling.h"
+//#include "lidar_polling.h"
 #include "pace_setter_class.h"
 #include "process_values_class.h"
 #include "video_writer.h"
