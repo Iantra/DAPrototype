@@ -7,32 +7,28 @@
 
   
   <div id="readme" class="readme blob instapaper_body">
-    <article class="markdown-body entry-content" itemprop="text"><h1><a id="user-content-product-name" class="anchor" href="#product-name" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Raspberry Pi Driver Assist</h1>
+    <article class="markdown-body entry-content" itemprop="text"><h1><a id="user-content-product-name" class="anchor" href="#product-name" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Raspberry Pi-based Driver Assistant System</h1>
 
 <blockquote>
-<p>A standalone driver assist unit based on Raspberry Pi hardware and OpenCV libraries</p>
+<p>A standalone driver assistance unit based on the Raspberry Pi and OpenCV. Based off of software work done by Nate Greco.</p>
 </blockquote>
-
-<p><a href="/Example.png" target="_blank"><img src="/Example.png" alt="" style="max-width:100%;"></a></p>
-<p><a href="https://youtu.be/WRAR0lgYsj8">Daytime driving conditions</a></p>
-<p><a href="https://youtu.be/zDFjwTFDbJ0">Nighttime driving conditions</a></p>
-<p><a href="https://youtu.be/yc1ApW6gV3I">Rainy driving conditions</a></p>
 
 <blockquote>
 <p>This project is an attempt to create a standalone, windshield mounted driver assist unit with the following functionality:
 <ul>
 <li>LDW (Lane Departure Warning)</li>
 <li>FCW (Forward Collision Warning)</li>
-<li>Tailgate warning</li>
-<li>Driver pull-ahead warning</li>
-<li>Dashcam functionality (with GPS & timestamp overlay)</li>
+<li>Road sign recognition</li>
+<li>Uninterruptible power supply from 12/24V car output</li>
 </ul>
+ 
+Additionally, the cost should be kept as low and possible.
 </p>
 </blockquote>
 
 <h2><a id="user-content-installation" class="anchor" href="#installation" aria-hidden="true"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation</h2>
 
-<p>Debian (Jessie):</p>
+<p>Raspbian (Stretch) (WIP):</p>
 <div class="highlight highlight-source-shell">
 <pre>todo</pre>
 </div>
@@ -42,27 +38,17 @@
 <p>Part List:</p>
 <div class="highlight highlight-source-shell">
 <ul>
-<li>Raspberry Pi v3</li>
+<li>Raspberry Pi 3 Model B+</li>
 <li>8gb (or greater) class 10 SD card</li>
-<li>Rasbperry Pi v2.1 camera with cable</li>
-<li>LidarLite (v3) LIDAR rangefinder</li>
-<li>Adafruit Ultimate GPS</li>
-<li>GPS antenna and adapter</li>
-<li>5" HDMI 800x480 screen</li>
-<li>Flexible HDMI elbow</li>
-<li>Buzzer</li>
-<li>Female DC barrel jack connector</li>
-<li>Cigarette adapter with male DC barrel connector</li>
-<li>68000000uF 16V capacitor</li>
-<li>Power LED</li>
+<li>Rasbperry Pi v1.3 camera with cable</li>
+<li>(WIP) Laser sensor</li>
+<li>7" Touchscreen</li>
+<li>(WIP)Buzzer</li>
+<li>Cigarette USB adapter</li>
+<li>USB to micro USB cable</li>
+<li>(WIP)Power bank</li>
 <li>3D printed or other fabricated housing</li>
-<li>Custom made breadboard</li>
-<ul>
-<li>DC:DC buck poswer supply, 12V to 5V</li>
-<li>40-pin female header</li>
-<li>12V relay</li>
-<li>Various resistors, diodes, male and female header pins</li>
-</ul>
+<li>Various screws</li>
 </ul>
 </div>
 
@@ -73,7 +59,6 @@
 <ul>
 <li>OpenCv 3.1.0</li>
 <li>Raspicam 0.1.3</li>
-<li>WiringPi 2.29</li>
 </ul>
 </div>
 
