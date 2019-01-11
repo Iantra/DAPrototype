@@ -157,10 +157,10 @@ int main()
 	//Setup polling
 
 	//GPIO
-	bool gpiopoll{ false };
+	/*bool gpiopoll{ false };
 	if ( settings::gpio::kenabled ) {
 		try {
-			gpiopoll = GpioHandlerSetup();
+			//gpiopoll = GpioHandlerSetup();
 		} catch ( const std::exception& ex ) {
 			std::cout << "GPIO handler setup threw exception: "<< ex.what() << '\n';
 			gpiopoll = false;
@@ -171,9 +171,9 @@ int main()
 			std::cout << "GPIO handler setup threw exception of unknown type!" << '\n';
 			gpiopoll = false;
 		}
-	}
+	}*/
 	//GPS
-	gpsmm* gpsrecv{ NULL };
+	/*gpsmm* gpsrecv{ NULL };
 	bool gpspoll{ false };
 	bool timeset{ false };
 	if ( settings::gps::kenabled ) {
@@ -192,9 +192,9 @@ int main()
 		}
 	} else {
 		gpsrecv = NULL;
-	}
+	}*/
 	//FCW
-	FcwTracker* fcwtracker{ NULL };
+	/*FcwTracker* fcwtracker{ NULL };
 	bool fcwpoll{ false };
 	int dacmodule{ -1 };
 	if ( settings::fcw::kenabled ) {
@@ -214,7 +214,7 @@ int main()
 		}
 	} else {
 		fcwtracker = NULL;
-	}
+	}*/
     
 	//Loop
 	int i{ 0 };
@@ -223,27 +223,22 @@ int main()
 		i++;
 		//Flush cout buffer every second
 		if ( i % bufferflushrate == 0 ) std::cout << std::flush;
-		if ( (gpspoll) &&
-			 (i % gpspollinterval == 0) ) GpsPolling( processvalues,
-													  gpsrecv,
-													  timeset );
-		if ( (gpiopoll) &&
-			 (i % gpiopollinterval == 0) ) GpioHandler( processvalues,
-														exitsignal );
-		if ( (fcwpoll) &&
-			 (i % fcwpollinterval == 0) ) LidarPolling( processvalues,
-														dacmodule,
-													    fcwtracker );
+		//if ( (gpspoll) && (i % gpspollinterval == 0) ) 
+		//	GpsPolling( processvalues,  gpsrecv,  timeset );
+		//if ( (gpiopoll) &&
+		//	 (i % gpiopollinterval == 0) ) GpioHandler( processvalues,	exitsignal );
+		//if ( (fcwpoll) && (i % fcwpollinterval == 0) ) 
+		//	LidarPolling( processvalues, dacmodule, fcwtracker );
 
 		//Set Pace
 		mypacesetter.SetPace();
 	} while( !exitsignal );
 	
 	//Cleanup variables
-	delete gpsrecv;
-	gpsrecv = NULL;
-	delete fcwtracker;
-	fcwtracker = NULL;
+	//delete gpsrecv;
+	//gpsrecv = NULL;
+	//delete fcwtracker;
+	//fcwtracker = NULL;
 
     //Handle all the threads
 	t_videowriter.join();
