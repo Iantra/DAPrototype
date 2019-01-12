@@ -123,7 +123,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 			//Show latitude and longitude
 			if(settings::cam::kshowloc)
 			{
-			putText( modifiedimage,
+				putText( modifiedimage,
 					 ConvertLatLong(processvalues->latitude_, processvalues->longitude_),
 					 latlonglocation,
 					 cv::FONT_HERSHEY_COMPLEX,
@@ -133,58 +133,60 @@ void ImageEditorThread( cv::Mat *orgimage,
 					 cv::LINE_8,
 					 false );
 			}
-			//Show following time
-			std::stringstream timetext;
-			if (processvalues->fcwstatus_ > 0) {
-				timetext  << std::fixed <<
-							 std::setprecision(2) << processvalues->timetocollision_ << " s";
-			} else {
-				timetext  << "-.-- s";
-			}
-			/*putText( modifiedimage,
-					 timetext.str(),
-					 followingtimelocation,
-					 cv::FONT_HERSHEY_COMPLEX,
-					 followingtimesize,
-					 cv::Scalar(255,255,255),
-					 1,
-					 cv::LINE_8,
-					 false );
-			*/
-			//Show following distance
-			std::stringstream distancetext;
-			if ( processvalues->fcwstatus_ > 0 ) {
-				distancetext  << std::fixed <<
-								 std::setprecision(2) << processvalues->forwarddistance_ << " ft";
-			} else {
-				distancetext  << "-.-- ft";
-			}
-			putText( modifiedimage,
-					 distancetext.str(),
-					 distancelocation,
-					 cv::FONT_HERSHEY_COMPLEX,
-					 distancesize,
-					 cv::Scalar(255,255,255),
-					 1,
-					 cv::LINE_8,
-					 false );
-				
-			//Show diagnostic message
-			std::string diagnosticmessage{ GetDiagnosticString(processvalues->ldwstatus_,
-															   processvalues->fcwstatus_,
-															   processvalues-> gpsstatus_) };
-			if ( diagnosticmessage.length() != 0 ) {
+			
+			if(settings::fcw::kenabled){
+				//Show following time
+				std::stringstream timetext;
+				if (processvalues->fcwstatus_ > 0) {
+					timetext  << std::fixed <<
+								 std::setprecision(2) << processvalues->timetocollision_ << " s";
+				} else {
+					timetext  << "-.-- s";
+				}
 				putText( modifiedimage,
-						 diagnosticmessage,
-						 diagnosticlocation,
+						 timetext.str(),
+						 followingtimelocation,
 						 cv::FONT_HERSHEY_COMPLEX,
-						 diagnosticsize,
-						 cv::Scalar(0,0,255),
+						 followingtimesize,
+						 cv::Scalar(255,255,255),
 						 1,
 						 cv::LINE_8,
 						 false );
+
+				//Show following distance
+				std::stringstream distancetext;
+				if ( processvalues->fcwstatus_ > 0 ) {
+					distancetext  << std::fixed <<
+									 std::setprecision(2) << processvalues->forwarddistance_ << " ft";
+				} else {
+					distancetext  << "-.-- ft";
+				}
+				putText( modifiedimage,
+						 distancetext.str(),
+						 distancelocation,
+						 cv::FONT_HERSHEY_COMPLEX,
+						 distancesize,
+						 cv::Scalar(255,255,255),
+						 1,
+						 cv::LINE_8,
+						 false );
+
+				//Show diagnostic message
+				std::string diagnosticmessage{ GetDiagnosticString(processvalues->ldwstatus_,
+																   processvalues->fcwstatus_,
+																   processvalues-> gpsstatus_) };
+				if ( diagnosticmessage.length() != 0 ) {
+					putText( modifiedimage,
+							 diagnosticmessage,
+							 diagnosticlocation,
+							 cv::FONT_HERSHEY_COMPLEX,
+							 diagnosticsize,
+							 cv::Scalar(0,0,255),
+							 1,
+							 cv::LINE_8,
+							 false );
+				}
 			}
-			
 					
 			//Overlay lanes
 			/*Polygon newpolygon = processvalues->GetPolygon();
@@ -212,15 +214,6 @@ void ImageEditorThread( cv::Mat *orgimage,
 					cv::line( lineimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3);
 				}
 				OverlayImage( &lineimage, &modifiedimage );
-				putText( modifiedimage,
-					 "displaying lanes",
-					 followingtimelocation,
-					 cv::FONT_HERSHEY_COMPLEX,
-					 followingtimesize,
-					 cv::Scalar(255,255,255),
-					 1,
-					 cv::LINE_8,
-					 false );
 			}
 			//Write display image
 			displaymutex->lock();
