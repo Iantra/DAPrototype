@@ -204,13 +204,14 @@ void ImageEditorThread( cv::Mat *orgimage,
 			
 			if(settings::cam::kshadelanes){
 				std::vector<cv::Vec4i> newlines = processvalues->GetLines();
+				cv::Scalar color = cv::Scalar( 0, 250, 30 );
 				cv::Mat lineimage{ modifiedimage.size(),
 									  CV_8UC1,
 									  cv::Scalar(0) };
 				for( size_t i = 0; i < newlines.size(); i++ )
 				{
 					cv::Vec4i l = newlines[i];
-					cv::Scalar color = cv::Scalar( 0, 250, 30 );
+					
 					cv::line( lineimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3);
 					
 				}
