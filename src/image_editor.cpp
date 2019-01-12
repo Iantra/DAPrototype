@@ -209,7 +209,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 				{
 					cv::Vec4i l = newlines[i];
 					cv::Scalar color = cv::Scalar( 0, 250, 30 );
-					cv::line( lineimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3, CV_AA );
+					cv::line( lineimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3, cv::CV_AA );
 				}
 				OverlayImage( &lineimage, &modifiedimage );
 			}
