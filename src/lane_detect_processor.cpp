@@ -103,7 +103,7 @@ void ProcessImage ( cv::Mat& image,
 //-----------------------------------------------------------------------------------------
 //Find highest scoring pair of lines
 //-----------------------------------------------------------------------------------------	
-	/*Polygon bestpolygon( lanedetectconstants::defaultpolygon );
+	Polygon bestpolygon( lanedetectconstants::defaultpolygon );
 	float maxscore{ lanedetectconstants::k_lowestscorelimit };
 	EvaluatedLine leftline;
 	EvaluatedLine rightline;
@@ -147,7 +147,7 @@ void ProcessImage ( cv::Mat& image,
 					 houghlinesmat.rows,
 					 true );
 	}
-	*/
+	
 //-----------------------------------------------------------------------------------------
 //Return results
 //-----------------------------------------------------------------------------------------	
@@ -155,8 +155,8 @@ void ProcessImage ( cv::Mat& image,
 			   std::end(bestpolygon),
 			   std::begin(polygon) );
 	*/
-	//std::vector<cv::Vec4i> bestLines = {leftline.line, rightline.line};
-	retlines = lines;
+	std::vector<cv::Vec4i> bestlines = {leftline.line, rightline.line};
+	retlines = bestlines;
 	return;
 }
 
