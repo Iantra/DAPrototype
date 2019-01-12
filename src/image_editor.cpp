@@ -212,8 +212,9 @@ void ImageEditorThread( cv::Mat *orgimage,
 					cv::Vec4i l = newlines[i];
 					cv::Scalar color = cv::Scalar( 0, 250, 30 );
 					cv::line( lineimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3);
-					cv::line( lineimage, cv::Point(400, 0), cv::Point(400, 480), color, 3);
+					
 				}
+				cv::line( lineimage, cv::Point(400, 0), cv::Point(400, 480), color, 3);
 				OverlayImage( &lineimage, &modifiedimage );
 			}
 			//Write display image
