@@ -155,7 +155,7 @@ void ProcessImage ( cv::Mat& image,
 			   std::end(bestpolygon),
 			   std::begin(polygon) );
 	*/
-	retlines = std::Vector{leftline::line, rightline::line};
+	retlines = std::vector{leftline::line, rightline::line};
 	return;
 }
 
