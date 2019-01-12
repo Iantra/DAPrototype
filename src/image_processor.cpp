@@ -72,7 +72,7 @@ void ProcessImageThread( cv::Mat *orgimage,
 				std::vector<cv::Vec4i> newlines;
 				//Polygon newpolygon;
 				//ProcessImage( processimage, newpolygon );
-				ProcessImage( processimage, &newlines );
+				ProcessImage( processimage, newlines );
 				/*AveragePolygon( newpolygon,
 								pastpolygons,
 								settings::ldw::ksamplestoaverage,
