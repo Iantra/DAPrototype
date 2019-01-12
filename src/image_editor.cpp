@@ -208,9 +208,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 				for( size_t i = 0; i < newlines.size(); i++ )
 				{
 					cv::Vec4i l = newlines[i];
-					
 					cv::line( modifiedimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3);
-					cv::line( modifiedimage, cv::Point(400, 0), cv::Point(400+10*i, 480), color, 3);
 					
 				}
 				
