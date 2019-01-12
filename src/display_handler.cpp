@@ -70,7 +70,7 @@ void DisplayUpdateThread( cv::Mat *image,
 	//Initialize display with first image
 	std::cout << "Attempting to open display..." << '\n';
 	cv::namedWindow( "Output", cv::WINDOW_NORMAL );
-	//cv::setWindowProperty( "Output", cv::WND_PROP_FULLSCREEN, cv::WINDOW_FULLSCREEN );
+	cv::setWindowProperty( "Output", cv::WND_PROP_FULLSCREEN, cv::WINDOW_FULLSCREEN );
 	std::cout << "Display opened!" << '\n';
 
 	
