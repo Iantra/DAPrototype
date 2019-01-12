@@ -71,7 +71,7 @@ void ProcessImageThread( cv::Mat *orgimage,
 				//Get lanes
 				std::vector<cv::Vec4i> newlines;
 				//Polygon newpolygon;
-				ProcessImage( processimage, newpolygon );
+				//ProcessImage( processimage, newpolygon );
 				ProcessImage( processimage, newlines );
 				/*AveragePolygon( newpolygon,
 								pastpolygons,
