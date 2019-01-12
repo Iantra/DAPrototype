@@ -43,7 +43,7 @@
 /*****************************************************************************************/
 //Main function
 void ProcessImage ( cv::Mat& image,
-                    Polygon& polygon )
+                    std::vector<cv::Vec4i>& retlines//Polygon& polygon )
 {
 //-----------------------------------------------------------------------------------------
 //Image manipulation
@@ -88,7 +88,7 @@ void ProcessImage ( cv::Mat& image,
 //-----------------------------------------------------------------------------------------
 //Filter and sort lines
 //-----------------------------------------------------------------------------------------	
-	std::vector<EvaluatedLine> evaluatedlines;
+	/*std::vector<EvaluatedLine> evaluatedlines;
 	for ( cv::Vec4i &line : lines ) {
 		EvaluateLine( line, evaluatedlines );
 	}
@@ -147,13 +147,15 @@ void ProcessImage ( cv::Mat& image,
 					 houghlinesmat.rows,
 					 true );
 	}
-	
+	*/
 //-----------------------------------------------------------------------------------------
 //Return results
 //-----------------------------------------------------------------------------------------	
-	std::copy( std::begin(bestpolygon),
+	/*std::copy( std::begin(bestpolygon),
 			   std::end(bestpolygon),
 			   std::begin(polygon) );
+	*/
+	*retlines = lines;
 	return;
 }
 
