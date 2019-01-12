@@ -105,7 +105,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 					 cv::LINE_8,
 					 false );
 			//Show speed
-			if(0)
+			if(settings::cam::kshowspeed)
 			{
 				std::stringstream speedtext;
 				speedtext << std::fixed <<
@@ -121,7 +121,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 						 false );
 			}
 			//Show latitude and longitude
-			if(0)
+			if(settings::cam::kshowloc)
 			{
 			putText( modifiedimage,
 					 ConvertLatLong(processvalues->latitude_, processvalues->longitude_),
@@ -141,7 +141,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 			} else {
 				timetext  << "-.-- s";
 			}
-			putText( modifiedimage,
+			/*putText( modifiedimage,
 					 timetext.str(),
 					 followingtimelocation,
 					 cv::FONT_HERSHEY_COMPLEX,
@@ -150,7 +150,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 					 1,
 					 cv::LINE_8,
 					 false );
-			
+			*/
 			//Show following distance
 			std::stringstream distancetext;
 			if ( processvalues->fcwstatus_ > 0 ) {
@@ -212,6 +212,15 @@ void ImageEditorThread( cv::Mat *orgimage,
 					cv::line( lineimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3);
 				}
 				OverlayImage( &lineimage, &modifiedimage );
+				putText( modifiedimage,
+					 "displaying lanes",
+					 followingtimelocation,
+					 cv::FONT_HERSHEY_COMPLEX,
+					 followingtimesize,
+					 cv::Scalar(255,255,255),
+					 1,
+					 cv::LINE_8,
+					 false );
 			}
 			//Write display image
 			displaymutex->lock();
