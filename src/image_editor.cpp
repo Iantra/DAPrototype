@@ -202,7 +202,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 				OverlayImage( &polygonimage, &modifiedimage );
 			}*/
 			
-			//if(settings::cam::kshadelanes){
+			if(settings::cam::kshadelanes){
 				std::vector<cv::Vec4i> newlines = processvalues->GetLines();
 				cv::Scalar color = cv::Scalar( 0, 250, 30 );
 				cv::Mat lineimage{ modifiedimage.size(),
@@ -212,12 +212,11 @@ void ImageEditorThread( cv::Mat *orgimage,
 				{
 					cv::Vec4i l = newlines[i];
 					
-					cv::line( lineimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3);
+					cv::line( modifiedimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3);
 					
 				}
 				cv::line( modifiedimage, cv::Point(400, 0), cv::Point(400, 480), color, 3);
-				//OverlayImage( &lineimage, &modifiedimage );
-			//}
+			}
 			//Write display image
 			displaymutex->lock();
 			*displayimage = modifiedimage;
