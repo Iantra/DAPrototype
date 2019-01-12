@@ -69,6 +69,8 @@ class ProcessValues
         virtual ~ProcessValues();
 		Polygon GetPolygon();
 		void SetPolygon( Polygon &polygon );
+		std::vector<cv::Vec4i> GetLines();
+		void SetLines( std::vector<cv::Vec4i> &lines );
 		//LDW Status
 		//0 = inactive (disabled by xml or below speed)
 		//1 = left deviation (OK)
@@ -109,6 +111,8 @@ class ProcessValues
     private:
 		Polygon polygon_;
 		std::mutex polygonmutex_;
+		std::vector<cv::Vec4i> lines_;
+		std::mutex linesmutex_;
 };
 
 #endif // PROCESSVALUES_H
