@@ -68,6 +68,6 @@ std::vector<cv::Vec4i> ProcessValues::GetLines()
 void ProcessValues::SetLines( std::vector<cv::Vec4i> &lines )
 {
     std::lock_guard<std::mutex> d_guard( linesmutex_ );
-	*lines = lines_;
+	lines = lines_;
 	return;	
 }
