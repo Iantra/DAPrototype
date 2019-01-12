@@ -105,7 +105,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 					 cv::LINE_8,
 					 false );
 			//Show speed
-			if(settings::cam::kshowspeed)
+			if(0)
 			{
 				std::stringstream speedtext;
 				speedtext << std::fixed <<
@@ -121,7 +121,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 						 false );
 			}
 			//Show latitude and longitude
-			if(settings::cam::kshowloc)
+			if(0)
 			{
 			putText( modifiedimage,
 					 ConvertLatLong(processvalues->latitude_, processvalues->longitude_),
