@@ -59,7 +59,7 @@ void ProcessValues::SetPolygon( Polygon &polygon )
 	return;	
 }
 
-void ProcessValues::GetLines()
+std::vector<cv::Vec4i> ProcessValues::GetLines()
 {
     std::lock_guard<std::mutex> d_guard( linesmutex_ );
 	return lines_;
