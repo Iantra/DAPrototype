@@ -59,13 +59,13 @@
 
 //DAPrototype source files
 #include "display_handler.h"
-//#include "gpio_handler.h"
-//#include "gps_polling.h"
+#include "gpio_handler.h"
+#include "gps_polling.h"
 #include "image_capturer.h"
 #include "image_editor.h"
 #include "image_processor.h"
 #include "lane_detect_processor.h"
-//#include "lidar_polling.h"
+#include "lidar_polling.h"
 #include "pace_setter_class.h"
 #include "process_values_class.h"
 #include "video_writer.h"
@@ -157,7 +157,7 @@ int main()
 	//Setup polling
 
 	//GPIO
-	/*bool gpiopoll{ false };
+	bool gpiopoll{ false };
 	if ( settings::gpio::kenabled ) {
 		try {
 			//gpiopoll = GpioHandlerSetup();
@@ -171,9 +171,9 @@ int main()
 			std::cout << "GPIO handler setup threw exception of unknown type!" << '\n';
 			gpiopoll = false;
 		}
-	}*/
+	}
 	//GPS
-	/*gpsmm* gpsrecv{ NULL };
+	gpsmm* gpsrecv{ NULL };
 	bool gpspoll{ false };
 	bool timeset{ false };
 	if ( settings::gps::kenabled ) {
@@ -192,9 +192,9 @@ int main()
 		}
 	} else {
 		gpsrecv = NULL;
-	}*/
+	}
 	//FCW
-	/*FcwTracker* fcwtracker{ NULL };
+	FcwTracker* fcwtracker{ NULL };
 	bool fcwpoll{ false };
 	int dacmodule{ -1 };
 	if ( settings::fcw::kenabled ) {
@@ -214,7 +214,7 @@ int main()
 		}
 	} else {
 		fcwtracker = NULL;
-	}*/
+	}
     
 	//Loop
 	int i{ 0 };
