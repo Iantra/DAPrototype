@@ -105,20 +105,24 @@ void ImageEditorThread( cv::Mat *orgimage,
 					 cv::LINE_8,
 					 false );
 			//Show speed
-			std::stringstream speedtext;
-			speedtext << std::fixed <<
-						 std::setprecision(1) << processvalues->gpsspeed_ << " mph";
-			putText( modifiedimage,
-					 speedtext.str(),
-					 speedlocation,
-					 cv::FONT_HERSHEY_COMPLEX,
-					 speedsize,
-					 cv::Scalar(0,255,0),
-					 1,
-					 cv::LINE_8,
-					 false );
-			
+			if(settings::cam::kshowspeed)
+			{
+				std::stringstream speedtext;
+				speedtext << std::fixed <<
+							 std::setprecision(1) << processvalues->gpsspeed_ << " mph";
+				putText( modifiedimage,
+						 speedtext.str(),
+						 speedlocation,
+						 cv::FONT_HERSHEY_COMPLEX,
+						 speedsize,
+						 cv::Scalar(0,255,0),
+						 1,
+						 cv::LINE_8,
+						 false );
+			}
 			//Show latitude and longitude
+			if(settings::cam::kshowloc)
+			{
 			putText( modifiedimage,
 					 ConvertLatLong(processvalues->latitude_, processvalues->longitude_),
 					 latlonglocation,
@@ -128,7 +132,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 					 1,
 					 cv::LINE_8,
 					 false );
-				
+			}
 			//Show following time
 			std::stringstream timetext;
 			if (processvalues->fcwstatus_ > 0) {
@@ -183,7 +187,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 			
 					
 			//Overlay lanes
-			Polygon newpolygon = processvalues->GetPolygon();
+			/*Polygon newpolygon = processvalues->GetPolygon();
 			cv::Point cvpointarray[4];
 			std::copy( newpolygon.begin(), newpolygon.end(), cvpointarray );
 			if ( (newpolygon[0] != cv::Point(0,0)) &&
@@ -194,8 +198,21 @@ void ImageEditorThread( cv::Mat *orgimage,
 									  cv::Scalar(0) };
 				cv::fillConvexPoly( polygonimage, cvpointarray, 4,  cv::Scalar(1) );
 				OverlayImage( &polygonimage, &modifiedimage );
-			}
+			}*/
 			
+			if(settings::cam::kshadelanes){
+				std::vector<cv::Vec4i>& newlines = processvalues->GetLines();
+				cv::Mat lineimage{ modifiedimage.size(),
+									  CV_8UC1,
+									  cv::Scalar(0) };
+				for( size_t i = 0; i < newlines.size(); i++ )
+				{
+					cv::Vec4i l = lines[i];
+					cv::Scalar color = cv::Scalar( 0, 250, 30 );
+					cv::line( lineimage, cv::Point(l[0], l[1]), cv::Point(l[2], l[3]), color, 3, CV_AA );
+				}
+				OverlayImage( &lineimage, &modifiedimage );
+			}
 			//Write display image
 			displaymutex->lock();
 			*displayimage = modifiedimage;
