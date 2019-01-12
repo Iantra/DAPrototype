@@ -47,10 +47,10 @@ namespace lanedetectconstants {
 	uint16_t k_vanishingpointy{ 260 };				//Relative to image size, must change
 	uint16_t k_verticallimit{ 280 };				//Relative to image size, must change
 	uint16_t k_rho{ 1 };
-	float k_theta{ 0.13962634015f };				//Pi / 22.5
-	uint16_t k_minimumsize{ 25 };					//Relative to image size, must change
-	uint16_t k_maxlinegap{ 5 };						//Relative to image size, must change
-	uint16_t k_threshold{ 30 };						//Relative to image size, must change
+	float k_theta{ CV_PI/180 };//0.13962634015f };				//Pi / 22.5
+	uint16_t k_minimumsize{ 35 };//25 };					//Relative to image size, must change
+	uint16_t k_maxlinegap{ 210 };//5 };						//Relative to image size, must change
+	uint16_t k_threshold{ 43 };//30 };						//Relative to image size, must change
 
 	//Polygon filtering
 	uint16_t k_maxoffsetfromcenter{ 400 };			//Relative to image size, must change
