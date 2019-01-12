@@ -88,7 +88,7 @@ void ProcessImage ( cv::Mat& image,
 //-----------------------------------------------------------------------------------------
 //Filter and sort lines
 //-----------------------------------------------------------------------------------------	
-	/*std::vector<EvaluatedLine> evaluatedlines;
+	std::vector<EvaluatedLine> evaluatedlines;
 	for ( cv::Vec4i &line : lines ) {
 		EvaluateLine( line, evaluatedlines );
 	}
@@ -147,7 +147,7 @@ void ProcessImage ( cv::Mat& image,
 					 houghlinesmat.rows,
 					 true );
 	}
-	*/
+	
 //-----------------------------------------------------------------------------------------
 //Return results
 //-----------------------------------------------------------------------------------------	
@@ -155,7 +155,7 @@ void ProcessImage ( cv::Mat& image,
 			   std::end(bestpolygon),
 			   std::begin(polygon) );
 	*/
-	retlines = lines;
+	retlines = std::Vector{leftline::line, rightline::line};
 	return;
 }
 
