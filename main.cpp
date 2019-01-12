@@ -235,10 +235,10 @@ int main()
 	} while( !exitsignal );
 	
 	//Cleanup variables
-	//delete gpsrecv;
-	//gpsrecv = NULL;
-	//delete fcwtracker;
-	//fcwtracker = NULL;
+	delete gpsrecv;
+	gpsrecv = NULL;
+	delete fcwtracker;
+	fcwtracker = NULL;
 
     //Handle all the threads
 	t_videowriter.join();
