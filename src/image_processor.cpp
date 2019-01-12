@@ -57,7 +57,7 @@ void ProcessImageThread( cv::Mat *orgimage,
 	}
 
 	//Create thread variables
-	std::deque<Polygon> pastpolygons;
+	//std::deque<Polygon> pastpolygons;
 
 	//Loop indefinitely
 	while( !(*exitsignal) ) {
@@ -69,15 +69,17 @@ void ProcessImageThread( cv::Mat *orgimage,
 				capturemutex->unlock();
 				
 				//Get lanes
-				Polygon newpolygon;
+				std::vector<cv::Vec4i> newlines;
+				//Polygon newpolygon;
 				ProcessImage( processimage, newpolygon );
-				AveragePolygon( newpolygon,
+				ProcessImage( processimage, newlines );
+				/*AveragePolygon( newpolygon,
 								pastpolygons,
 								settings::ldw::ksamplestoaverage,
-								settings::ldw::ksamplestokeep );	
+								settings::ldw::ksamplestokeep );*/	
 
 				//Evaluate LDW
-				if ( newpolygon[0] != cv::Point(0,0) ) {
+				/*if ( newpolygon[0] != cv::Point(0,0) ) {
 					double deviationpix = 0.5 * ( newpolygon[0].x + 
 												  newpolygon[1].x - 
 												  settings::cam::kpixwidth );
@@ -101,11 +103,13 @@ void ProcessImageThread( cv::Mat *orgimage,
 					} else if ( -settings::ldw::kperoffsetalarm > deviationper ) {
 						processvalues->ldwstatus_ = LDW_RIGHT_DEVIATION_ALARM;
 					}
+					
 				} else {
 					processvalues->ldwstatus_ = LDW_ERROR;
-				}
+				}*/
 				//Write new data
-				processvalues->SetPolygon(newpolygon);
+				//processvalues->SetPolygon(newpolygon);
+				processvalues->SetLines(newlines);
 			} else {
 				processvalues->ldwstatus_ = LDW_INACTIVE;
 			}
