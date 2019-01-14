@@ -193,7 +193,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 			cv::Point cvpointarray[4];
 			std::copy( newpolygon.begin(), newpolygon.end(), cvpointarray );
 			if ( (newpolygon[0] != cv::Point(0,0)) &&
-				 settings::cam::kshadelanes &&
+				 settings::cam::kshadelanes //&&
 				 /*(processvalues->ldwstatus_ > 0)*/ ) {
 				cv::Mat polygonimage{ modifiedimage.size(),
 									  CV_8UC1,
