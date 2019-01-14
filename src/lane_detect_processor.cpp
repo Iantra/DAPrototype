@@ -43,7 +43,7 @@
 /*****************************************************************************************/
 //Main function
 void ProcessImage ( cv::Mat& image,
-                    std::vector<cv::Vec4i> &retlines)//Polygon& polygon )
+                    Polygon& polygon ) //std::vector<cv::Vec4i> &retlines)
 {
 //-----------------------------------------------------------------------------------------
 //Image manipulation
@@ -151,12 +151,12 @@ void ProcessImage ( cv::Mat& image,
 //-----------------------------------------------------------------------------------------
 //Return results
 //-----------------------------------------------------------------------------------------	
-	/*std::copy( std::begin(bestpolygon),
+	std::copy( std::begin(bestpolygon),
 			   std::end(bestpolygon),
 			   std::begin(polygon) );
-	*/
-	std::vector<cv::Vec4i> bestlines = {leftline.line, rightline.line};
-	retlines = bestlines;
+	
+	//std::vector<cv::Vec4i> bestlines = {leftline.line, rightline.line};
+	//retlines = bestlines;
 	return;
 }
 
