@@ -202,6 +202,8 @@ void ImageEditorThread( cv::Mat *orgimage,
 				OverlayImage( &polygonimage, &modifiedimage );
 			}
 			
+			cv::line( modifiedimage, cv::Point(0, 200), cv::Point(640, 200), color, 3);
+			cv::line( modifiedimage, cv::Point(266, 0), cv::Point(266, 480), color, 3);
 			/*if(settings::cam::kshadelanes){
 				std::vector<cv::Vec4i> newlines = processvalues->GetLines();
 				cv::Scalar color = cv::Scalar( 0, 250, 30 );
