@@ -70,13 +70,13 @@ void ProcessImageThread( cv::Mat *orgimage,
 				
 				//Get lanes
 				std::vector<cv::Vec4i> newlines;
-				//Polygon newpolygon;
-				//ProcessImage( processimage, newpolygon );
-				ProcessImage( processimage, newlines );
-				/*AveragePolygon( newpolygon,
+				Polygon newpolygon;
+				ProcessImage( processimage, newpolygon );
+				//ProcessImage( processimage, newlines );
+				AveragePolygon( newpolygon,
 								pastpolygons,
 								settings::ldw::ksamplestoaverage,
-								settings::ldw::ksamplestokeep );*/	
+								settings::ldw::ksamplestokeep );	
 
 				//Evaluate LDW
 				/*if ( newpolygon[0] != cv::Point(0,0) ) {
@@ -108,8 +108,8 @@ void ProcessImageThread( cv::Mat *orgimage,
 					processvalues->ldwstatus_ = LDW_ERROR;
 				}*/
 				//Write new data
-				//processvalues->SetPolygon(newpolygon);
-				processvalues->SetLines(newlines);
+				processvalues->SetPolygon(newpolygon);
+				//processvalues->SetLines(newlines);
 			} else {
 				processvalues->ldwstatus_ = LDW_INACTIVE;
 			}
