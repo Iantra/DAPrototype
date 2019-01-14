@@ -192,6 +192,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 			Polygon newpolygon = processvalues->GetPolygon();
 			cv::Point cvpointarray[4];
 			std::copy( newpolygon.begin(), newpolygon.end(), cvpointarray );
+			cv::line( modifiedimage, cv::Point(0, 0), cv::Point(300, 300), cv::Scalar(1), 3);
 			cv::fillConvexPoly( modifiedimage, cvpointarray, 4,  cv::Scalar(1) );
 			/*if ( (newpolygon[0] != cv::Point(0,0)) &&
 				 settings::cam::kshadelanes &&
