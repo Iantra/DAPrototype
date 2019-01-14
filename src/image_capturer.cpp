@@ -40,7 +40,7 @@ void CaptureImageThread( cv::Mat *capture,
 	cv::VideoCapture capt(src);
 	if ( !capt.isOpened())
  	 {
-  		cout  << "Could not open reference!" << src << endl;
+  		std::cout  << "Could not open reference!" << src << '\n';
  		 exit(-1);
   	}
 	std::cout << "Reference opened succesfully!" << '\n';
