@@ -191,6 +191,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 			//Overlay lanes
 			Polygon newpolygon = processvalues->GetPolygon();
 			cv::Point cvpointarray[4];
+			cv::Scalar color = cv::Scalar( 0, 250, 30 );
 			std::copy( newpolygon.begin(), newpolygon.end(), cvpointarray );
 			if ( (newpolygon[0] != cv::Point(0,0)) &&
 				 settings::cam::kshadelanes //&&
