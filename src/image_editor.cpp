@@ -189,7 +189,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 			}
 					
 			//Overlay lanes
-			/*Polygon newpolygon = processvalues->GetPolygon();
+			Polygon newpolygon = processvalues->GetPolygon();
 			cv::Point cvpointarray[4];
 			std::copy( newpolygon.begin(), newpolygon.end(), cvpointarray );
 			if ( (newpolygon[0] != cv::Point(0,0)) &&
@@ -200,9 +200,9 @@ void ImageEditorThread( cv::Mat *orgimage,
 									  cv::Scalar(0) };
 				cv::fillConvexPoly( polygonimage, cvpointarray, 4,  cv::Scalar(1) );
 				OverlayImage( &polygonimage, &modifiedimage );
-			}*/
+			}
 			
-			if(settings::cam::kshadelanes){
+			/*if(settings::cam::kshadelanes){
 				std::vector<cv::Vec4i> newlines = processvalues->GetLines();
 				cv::Scalar color = cv::Scalar( 0, 250, 30 );
 				for( size_t i = 0; i < newlines.size(); i++ )
@@ -212,7 +212,8 @@ void ImageEditorThread( cv::Mat *orgimage,
 					
 				}
 				
-			}
+			}*/
+			
 			//Write display image
 			displaymutex->lock();
 			*displayimage = modifiedimage;
