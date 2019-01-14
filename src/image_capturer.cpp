@@ -36,7 +36,7 @@ void CaptureImageThread( cv::Mat *capture,
 
     //Create camera
 	//raspicam::RaspiCam_Cv Camera;
-	const String src = "../data/HighwayDashcam.avi";
+	const char* src = "../data/HighwayDashcam.avi";
 	cv::VideoCapture capt(src);
 	if ( !capt.isOpened())
  	 {
