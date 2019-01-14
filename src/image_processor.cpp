@@ -73,10 +73,10 @@ void ProcessImageThread( cv::Mat *orgimage,
 				Polygon newpolygon;
 				ProcessImage( processimage, newpolygon );
 				//ProcessImage( processimage, newlines );
-				/*AveragePolygon( newpolygon,
+				AveragePolygon( newpolygon,
 								pastpolygons,
 								settings::ldw::ksamplestoaverage,
-								settings::ldw::ksamplestokeep );	*/
+								settings::ldw::ksamplestokeep );	
 
 				//Evaluate LDW
 				/*if ( newpolygon[0] != cv::Point(0,0) ) {
