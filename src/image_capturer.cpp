@@ -21,7 +21,7 @@
 
 //3rd party libraries
 #include "opencv2/opencv.hpp"
-#include "opencv2/highgui.hpp"
+#include "opencv2/highgui/highgui.hpp"
 #include "raspicam/raspicam_cv.h"
 
 //Project libraries
