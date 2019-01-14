@@ -57,7 +57,7 @@ void ProcessImageThread( cv::Mat *orgimage,
 	}
 
 	//Create thread variables
-	//std::deque<Polygon> pastpolygons;
+	std::deque<Polygon> pastpolygons;
 
 	//Loop indefinitely
 	while( !(*exitsignal) ) {
