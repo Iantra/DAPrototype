@@ -67,12 +67,14 @@ void CaptureImageThread( cv::Mat *capture,
 	//Loop indefinitely
 	while( !(*exitsignal) ) {
 		try {
-			if(frameNum < 200)
+			if(frameNum < 1000){
 				++frameNum;
-			else
+			}else{
 				frameNum = 0;
+				cap.set(1, 0 );
+			}
 			cv::Mat newimage;
-			cap.set(1, frameNum );
+			
     			cap >> newimage;
 			/*Camera.grab();
 			Camera.retrieve( newimage );
