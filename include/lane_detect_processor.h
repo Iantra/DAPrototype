@@ -64,8 +64,8 @@ void AveragePolygon( Polygon& polygon,
 					 const int samplestoaverage,
 					 const int samplestokeep );
 void ProcessImage( cv::Mat& image,
-		  std::vector<cv::Vec4i> & lines );
-				   //Polygon& polygon );
+		     Polygon& polygon );
+			//std::vector<cv::Vec4i> & lines );
 float FastArcTan2( const float y,
 				   const float x );
 
