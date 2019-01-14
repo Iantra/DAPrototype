@@ -43,8 +43,8 @@ namespace lanedetectconstants {
 	
 	//Line filtering
 	float k_maxvanishingpointangle{ 18.0f };
-	uint16_t k_vanishingpointx{ 400 };				//Relative to image size, must change
-	uint16_t k_vanishingpointy{ 260 };				//Relative to image size, must change
+	uint16_t k_vanishingpointx{ 266 };				//Relative to image size, must change
+	uint16_t k_vanishingpointy{ 173 };				//Relative to image size, must change
 	uint16_t k_verticallimit{ 280 };				//Relative to image size, must change
 	uint16_t k_rho{ 1 };
 	float k_theta{ CV_PI/22.5 };//0.13962634015f };				//Pi / 22.5
