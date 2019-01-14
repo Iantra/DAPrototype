@@ -139,14 +139,14 @@ void ProcessImage ( cv::Mat& image,
 	}
 
 	//Set bottom of polygon equal to optimal polygon
-	if ( bestpolygon != lanedetectconstants::defaultpolygon) {
+	/*if ( bestpolygon != lanedetectconstants::defaultpolygon) {
 		FindPolygon( bestpolygon,
 					 leftline,
 					 rightline,
 					 houghlinesmat.cols,
 					 houghlinesmat.rows,
 					 true );
-	}
+	}*/
 	
 //-----------------------------------------------------------------------------------------
 //Return results
