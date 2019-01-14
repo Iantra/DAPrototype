@@ -50,7 +50,7 @@ namespace lanedetectconstants {
 	float k_theta{ CV_PI/22.5 };//0.13962634015f };				//Pi / 22.5
 	uint16_t k_minimumsize{ 35 };//25 };					//Relative to image size, must change
 	uint16_t k_maxlinegap{ 200 };//5 };						//Relative to image size, must change
-	uint16_t k_threshold{ 50 };//30 };						//Relative to image size, must change
+	uint16_t k_threshold{ 20 };//30 };						//Relative to image size, must change
 
 	//Polygon filtering
 	uint16_t k_maxoffsetfromcenter{ 400 };			//Relative to image size, must change
