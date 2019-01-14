@@ -37,8 +37,8 @@ void CaptureImageThread( cv::Mat *capture,
     //Create camera
 	//raspicam::RaspiCam_Cv Camera;
 	const char* src = "../data/HighwayDashcam.avi";
-	cv::VideoCapture capt(src);
-	if ( !capt.isOpened())
+	cv::VideoCapture cap(src);
+	if ( !cap.isOpened())
  	 {
   		std::cout  << "Could not open reference!" << src << '\n';
  		 exit(-1);
@@ -71,7 +71,7 @@ void CaptureImageThread( cv::Mat *capture,
 			else
 				frameNum = 0;
 			cv::Mat newimage;
-			cv::cvSetCaptureProperty( cap, cv::CV_CAP_PROP_POS_FRAMES, frameNum );
+			cvSetCaptureProperty( cap, cv::CV_CAP_PROP_POS_FRAMES, frameNum );
     			cap >> newimage;
 			/*Camera.grab();
 			Camera.retrieve( newimage );
