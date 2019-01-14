@@ -71,7 +71,7 @@ void CaptureImageThread( cv::Mat *capture,
 			else
 				frameNum = 0;
 			cv::Mat newimage;
-			cap.set(VideoCapture::CV_CAP_PROP_POS_FRAMES, frameNum );
+			cap.set(cv::VideoCapture::CV_CAP_PROP_POS_FRAMES, frameNum );
     			cap >> newimage;
 			/*Camera.grab();
 			Camera.retrieve( newimage );
