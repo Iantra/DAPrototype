@@ -21,6 +21,7 @@
 
 //3rd party libraries
 #include "opencv2/opencv.hpp"
+#include "opencv2/highgui.hpp"
 #include "raspicam/raspicam_cv.h"
 
 //Project libraries
@@ -71,7 +72,7 @@ void CaptureImageThread( cv::Mat *capture,
 			else
 				frameNum = 0;
 			cv::Mat newimage;
-			cap.set(cv::VideoCapture::CV_CAP_PROP_POS_FRAMES, frameNum );
+			cap.set(cv::CV_CAP_PROP_POS_FRAMES, frameNum );
     			cap >> newimage;
 			/*Camera.grab();
 			Camera.retrieve( newimage );
