@@ -29,7 +29,7 @@
 //Project libraries
 #include "image_editor.h"
 #include "lane_detect_processor.h"
-#include "lane_detect_constants.h"
+#include "constants.h"
 #include "pace_setter_class.h"
 #include "xml_reader.h"
 
