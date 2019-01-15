@@ -1,10 +1,10 @@
 /******************************************************************************************
-  Date:    12.08.2016
-  Author:  Nathan Greco (Nathan.Greco@gmail.com)
+  Date:    01.2019
+  Author:  Iantra Solari (iantrasolari@gmail.com) (Original by Nathan Greco)
 
   Project:
       DAPrototype: Driver Assist Prototype
-	  http://github.com/NateGreco/DAPrototype.git
+	  http://github.com/Iantra/DAPrototype.git
 
   License:
 	  This software is licensed under GNU GPL v3.0
@@ -12,8 +12,8 @@
 ******************************************************************************************/
 
 //Header guard
-#ifndef LANEDETECTCONSTANTS_H
-#define LANEDETECTCONSTANTS_H
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 //Project libraries
 #include "lane_detect_processor.h"
@@ -65,4 +65,4 @@ namespace lanedetectconstants {
 
 }
 
-#endif // LANEDETECTCONSTANTS_H
+#endif // CONSTANTS_H
