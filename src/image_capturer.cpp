@@ -39,7 +39,7 @@ void CaptureImageThread( cv::Mat *capture,
 	raspicam::RaspiCam_Cv Camera;
 	
 	//Create reference
-	const char* src = "~/Desktop/DAPrototype/data/HighwayDashcam.avi";
+	const char* src = "../data/HighwayDashcam.avi";
 	cv::VideoCapture cap(src);
 	
 	//Set properties
