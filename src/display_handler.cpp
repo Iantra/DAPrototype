@@ -110,6 +110,8 @@ void DisplayUpdateThread( cv::Mat *image,
 
 void onMouse(int event, int x, int y, int flags, void*userdata)
 {
+	if( event != EVENT_LBUTTONDOWN )
+        	return;
 	if( x < 400 ){
 		settings::gen::kdebugscreen = !settings::gen::kdebugscreen;
 	}else{
