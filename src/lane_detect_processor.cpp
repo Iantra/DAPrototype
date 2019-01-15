@@ -1,10 +1,10 @@
 /******************************************************************************************
-  Date:    12.08.2016
-  Author:  Nathan Greco (Nathan.Greco@gmail.com)
+  Date:    01.2019
+  Author:  Iantra Solari (iantrasolari@gmail.com) (Original by Nathan Greco
 
   Project:
       DAPrototype: Driver Assist Prototype
-	  http://github.com/NateGreco/DAPrototype.git
+	  http://github.com/Iantra/DAPrototype.git
 
   License:
 	  This software is licensed under GNU GPL v3.0
