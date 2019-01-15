@@ -216,14 +216,16 @@ void ImageEditorThread( cv::Mat *orgimage,
 			}*/
 			
 			//DEBUG - Overlay VP and ROI
-			cv::Scalar color = cv::Scalar( 0, 30, 250 );
-			cv::line( modifiedimage, cv::Point(0, lanedetectconstants::k_vanishingpointy), cv::Point(800, lanedetectconstants::k_vanishingpointy), color, 1);
-			cv::line( modifiedimage, cv::Point(lanedetectconstants::k_vanishingpointx, 0), cv::Point(lanedetectconstants::k_vanishingpointx, 480), color, 1);
-			
-			drawContours( modifiedimage,
-				  lanedetectconstants::k_roipoints,
-				  0, color, 1 );
-			
+			if(settings::gen::kdebugscreen){
+				cv::Scalar color = cv::Scalar( 0, 30, 250 );
+				cv::line( modifiedimage, cv::Point(0, lanedetectconstants::k_vanishingpointy), cv::Point(800, lanedetectconstants::k_vanishingpointy), color, 1);
+				cv::line( modifiedimage, cv::Point(lanedetectconstants::k_vanishingpointx, 0), cv::Point(lanedetectconstants::k_vanishingpointx, 480), color, 1);
+
+				drawContours( modifiedimage,
+					  lanedetectconstants::k_roipoints,
+					  0, color, 1 );
+			}
+
 			//Write display image
 			displaymutex->lock();
 			*displayimage = modifiedimage;
