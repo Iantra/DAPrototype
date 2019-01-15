@@ -35,29 +35,32 @@ void CaptureImageThread( cv::Mat *capture,
 {
 	std::cout << "Image capturer thread starting!" << '\n';
 
-    //Create camera
-	//raspicam::RaspiCam_Cv Camera;
+    	//Create camera
+	raspicam::RaspiCam_Cv Camera;
+	
+	//Create reference
 	const char* src = "../data/HighwayDashcam.avi";
 	cv::VideoCapture cap(src);
-	if ( !cap.isOpened())
- 	 {
-  		std::cout  << "Could not open reference!" << src << '\n';
- 		 exit(-1);
-  	}
-	std::cout << "Reference opened succesfully!" << '\n';
+	
 	//Set properties
-	/*Camera.set( cv::CAP_PROP_FRAME_WIDTH, settings::cam::kpixwidth );
+	Camera.set( cv::CAP_PROP_FRAME_WIDTH, settings::cam::kpixwidth );
 	Camera.set( cv::CAP_PROP_FRAME_HEIGHT, settings::cam::kpixheight );
-	Camera.set( cv::CAP_PROP_FORMAT, CV_8UC3 );*/
+	Camera.set( cv::CAP_PROP_FORMAT, CV_8UC3 );
 	int frameNum = -1;          // Frame counter
 
     	//Open
-	/*if ( !Camera.open() ) {
+	if ( !Camera.open() ) {
 		std::cerr << "Error opening the camera" << '\n';
 		exit(-1);
 	}
 	std::cout << "Camera opened succesfully!" << '\n';
-	*/
+	
+	if ( !cap.isOpened())
+ 	 {
+  		std::cout  << "Error opening the reference" << src << '\n';
+ 		 exit(-1);
+  	}
+	std::cout << "Reference opened succesfully!" << '\n';
 	//create pace setter
 	PaceSetter camerapacer( std::max(std::max(settings::disp::kupdatefps,
 											  settings::cam::krecfps),
@@ -67,26 +70,32 @@ void CaptureImageThread( cv::Mat *capture,
 	//Loop indefinitely
 	while( !(*exitsignal) ) {
 		try {
-			if(frameNum < 1000){
-				++frameNum;
-			}else{
-				frameNum = 0;
-				cap.set(1, 0 );
-			}
-			cv::Mat newimage;
+			cv::Mat newimage;	//Frame data storage
 			
-    			cap >> newimage;
-			/*Camera.grab();
-			Camera.retrieve( newimage );
-			cv::flip( newimage, newimage, -1 );
-			//resize image
-			if ( newimage.rows != settings::cam::kpixheight ) {
-				cv::resize( newimage,
+			if(settings::gen::kusecam){	//Using camera
+				Camera.grab();
+				Camera.retrieve( newimage );
+				cv::flip( newimage, newimage, -1 );
+				//resize image
+				if ( newimage.rows != settings::cam::kpixheight ) {
+					cv::resize( 	newimage,
 							newimage,
 							cv::Size(settings::cam::kpixwidth,
-									 settings::cam::kpixheight) );
+							settings::cam::kpixheight) );
+				}
+			}else{	//Using reference
+				if(frameNum < 1000){
+					++frameNum;
+				}else{
+					frameNum = 0;
+					cap.set(1, 0 );
+				}
+
+
+				cap >> newimage;
 			}
-			*/
+			
+			//Send back frame data
 			capturemutex->lock();
 			*capture = newimage;
 			capturemutex->unlock(); 
