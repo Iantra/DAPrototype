@@ -213,7 +213,8 @@ namespace settings{
 	const int kreadsuccess(ReadXmlSettings());
 	namespace gen { 
 		const bool kenbuzzer{ g_genenbuzzer };
-		const bool kdebugscreen{ g_gendebugscreen };
+		bool kdebugscreen{ g_gendebugscreen };
+		bool kusecam{ false };
 		const bool kdebugterminal{ g_gendebugterminal };
 	}
 	namespace cam{
