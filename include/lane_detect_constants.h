@@ -27,11 +27,12 @@ namespace lanedetectconstants {
 							cv::Point(0,0) };
 							
 	//ROI											//Relative to image size, must change
-	const std::vector<std::vector<cv::Point>> k_roipoints{{	cv::Point(0,380),
-							       	cv::Point(0,350),
+	const std::vector<std::vector<cv::Point>> k_roipoints{{	cv::Point(0,420),
+							       	cv::Point(0,330),
 								cv::Point(200,180),
 								cv::Point(320,180),
-								cv::Point(600,380) }};
+								cv::Point(600,380),
+							      	cv::Point(600,420)}};
 													 
 	//Image evaluation
 	const cv::Scalar k_lowerwhitethreshold{ 0, 40, 80 };
