@@ -29,6 +29,7 @@
 //Project libraries
 #include "image_editor.h"
 #include "lane_detect_processor.h"
+#include "lane_detect_constants.h"
 #include "pace_setter_class.h"
 #include "xml_reader.h"
 
@@ -191,7 +192,6 @@ void ImageEditorThread( cv::Mat *orgimage,
 			//Overlay lanes
 			Polygon newpolygon = processvalues->GetPolygon();
 			cv::Point cvpointarray[4];
-			cv::Scalar color = cv::Scalar( 0, 250, 30 );
 			std::copy( newpolygon.begin(), newpolygon.end(), cvpointarray );
 			if ( (newpolygon[0] != cv::Point(0,0)) &&
 				 settings::cam::kshadelanes //&&
@@ -202,9 +202,7 @@ void ImageEditorThread( cv::Mat *orgimage,
 				cv::fillConvexPoly( polygonimage, cvpointarray, 4,  cv::Scalar(1) );
 				OverlayImage( &polygonimage, &modifiedimage );
 			}
-			
-			cv::line( modifiedimage, cv::Point(0, 200), cv::Point(640, 200), color, 3);
-			cv::line( modifiedimage, cv::Point(266, 0), cv::Point(266, 480), color, 3);
+
 			/*if(settings::cam::kshadelanes){
 				std::vector<cv::Vec4i> newlines = processvalues->GetLines();
 				cv::Scalar color = cv::Scalar( 0, 250, 30 );
@@ -216,6 +214,15 @@ void ImageEditorThread( cv::Mat *orgimage,
 				}
 				
 			}*/
+			
+			//DEBUG - Overlay VP and ROI
+			cv::Scalar color = cv::Scalar( 0, 30, 250 );
+			cv::line( modifiedimage, cv::Point(0, lanedetectconstants::k_vanishingpointy), cv::Point(640, lanedetectconstants::k_vanishingpointy), color, 1);
+			cv::line( modifiedimage, cv::Point(lanedetectconstants::k_vanishingpointx, 0), cv::Point(lanedetectconstants::k_vanishingpointx, 480), color, 1);
+			
+			drawContours( modifiedimage,
+				  lanedetectconstants::k_roipoints,
+				  0, color, 1 );
 			
 			//Write display image
 			displaymutex->lock();
