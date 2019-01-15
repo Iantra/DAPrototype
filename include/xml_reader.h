@@ -27,7 +27,7 @@ namespace settings{
 	extern const int kreadsuccess;
     namespace gen {
         extern const bool kenbuzzer;
-        extern const bool kdebugscreen;
+        extern bool kdebugscreen;
         extern const bool kdebugterminal;
     }
     namespace cam{
