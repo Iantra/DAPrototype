@@ -27,7 +27,7 @@
 #include "xml_reader.h"
 
 /*****************************************************************************************/
-
+void onMouse(int event, int x, int y, int flags, void*userdata);
 void DisplayUpdateThread( cv::Mat *image,
                           std::mutex *displaymutex,
 	                      std::atomic<bool> *exitsignal )
@@ -108,7 +108,7 @@ void DisplayUpdateThread( cv::Mat *image,
 	return;
 }
 
-void onMouse(int event, int x, int y, int flags, void*userdata)
+onMouse(int event, int x, int y, int flags, void*userdata))
 {
 	if( x < 400 ){
 		settings::gen::kdebugscreen = !settings::gen::kdebugscreen;
