@@ -28,6 +28,7 @@ namespace settings{
     namespace gen {
         extern const bool kenbuzzer;
         extern bool kdebugscreen;
+	extern bool usecam;
         extern const bool kdebugterminal;
     }
     namespace cam{
