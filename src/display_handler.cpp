@@ -27,7 +27,6 @@
 #include "xml_reader.h"
 
 /*****************************************************************************************/
-void onMouse(int event, int x, int y, int flags, void*userdata);
 void DisplayUpdateThread( cv::Mat *image,
                           std::mutex *displaymutex,
 	                      std::atomic<bool> *exitsignal )
