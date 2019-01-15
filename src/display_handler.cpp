@@ -107,7 +107,7 @@ void DisplayUpdateThread( cv::Mat *image,
 	return;
 }
 
-onMouse(int event, int x, int y, int flags, void*userdata))
+onMouse(int event, int x, int y, int flags, void*userdata)
 {
 	if( x < 400 ){
 		settings::gen::kdebugscreen = !settings::gen::kdebugscreen;
