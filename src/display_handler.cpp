@@ -1,10 +1,10 @@
 /******************************************************************************************
-  Date:    12.08.2016
-  Author:  Nathan Greco (Nathan.Greco@gmail.com)
+  Date:    01.2019
+  Author:  Iantra Solari (iantrasolari@gmail.com) (Original by Nathan Greco
 
   Project:
       DAPrototype: Driver Assist Prototype
-	  http://github.com/NateGreco/DAPrototype.git
+	  http://github.com/Iantra/DAPrototype.git
 
   License:
 	  This software is licensed under GNU GPL v3.0
@@ -27,6 +27,7 @@
 #include "xml_reader.h"
 
 /*****************************************************************************************/
+
 void DisplayUpdateThread( cv::Mat *image,
                           std::mutex *displaymutex,
 	                      std::atomic<bool> *exitsignal )
@@ -71,6 +72,7 @@ void DisplayUpdateThread( cv::Mat *image,
 	std::cout << "Attempting to open display..." << '\n';
 	cv::namedWindow( "Output", cv::WINDOW_NORMAL );
 	cv::setWindowProperty( "Output", cv::WND_PROP_FULLSCREEN, cv::WINDOW_FULLSCREEN );
+	cv::setMouseCallback("Output", onMouse, NULL);
 	std::cout << "Display opened!" << '\n';
 
 	
@@ -104,4 +106,13 @@ void DisplayUpdateThread( cv::Mat *image,
 	
 	std::cout << "Exiting display handler thread!" << '\n';
 	return;
+}
+
+void onMouse(int event, int x, int y, int flags, void*userdata)
+{
+	if( x < 400 ){
+		settings::gen::kdebugscreen = !settings::gen::kdebugscreen;
+	}else{
+		settings::gen::kusecam = !settings::gen::kusecam;
+	}
 }
