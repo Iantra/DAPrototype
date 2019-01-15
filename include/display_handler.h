@@ -26,5 +26,6 @@
 void DisplayUpdateThread( cv::Mat *image,
 						  std::mutex *displaymutex,
 						  std::atomic<bool> *exitsignal);
+void onMouse(int event, int x, int y, int flags, void*userdata);
 
 #endif // DISPLAY_HANDLER_H_INCLUDED
