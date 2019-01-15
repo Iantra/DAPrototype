@@ -22,7 +22,7 @@
 #include "opencv2/core/core.hpp"
 
 //Project libraries
-#include "lane_detect_constants.h"
+#include "constants.h"
 #include "lane_detect_processor.h"
 
 //Preprocessor
