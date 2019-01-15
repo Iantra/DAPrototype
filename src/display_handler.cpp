@@ -25,6 +25,7 @@
 //Project libraries
 #include "pace_setter_class.h"
 #include "xml_reader.h"
+#include "display_handler.h"
 
 /*****************************************************************************************/
 void DisplayUpdateThread( cv::Mat *image,
