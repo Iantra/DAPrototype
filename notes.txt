@@ -57,3 +57,11 @@
 		cd build
 		cmake .. -Draspicam_DIR=/usr/local/lib/cmake/
 		make
+		
+---------Extras
+-Check if camera is working:
+vcgencmd get_camera
+user:pi, pass:raspi
+
+-Autorun:
+sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart
