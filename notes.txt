@@ -65,3 +65,7 @@ user:pi, pass:raspi
 
 -Autorun:
 sudo nano /home/pi/.config/lxsession/LXDE-pi/autostart
+
+CV stuff
+https://docs.opencv.org/2.4/doc/tutorials/imgproc/shapedescriptors/find_contours/find_contours.html 
+
