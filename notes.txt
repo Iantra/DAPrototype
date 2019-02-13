@@ -1,11 +1,11 @@
-1. Set up LCD (Could be skipped if HDMI display is used (recommended))
+1. Set up working environment (Could be skipped if HDMI display is used (recommended))
 	1.1 Connect external HDMI monitor
 
 	1.2 Load NOOBS (V2.9) on SD card
 
 	1.3 Boot up and install Raspbian (V4.14)
 
-	--Step 1.4 only for Adafruit display, others might be different
+	--Step 1.4-1.5 only for Adafruit display, with 7" raspi display it's not necessary
 
 	1.4 Run the following commands and go through the setup process:
 		cd ~
@@ -15,7 +15,7 @@
 
 	1.5 Reboot and confirm the display is working
 
-	At this point, developing on the display is possible, although not recommended (major PITA)
+	At this point, developing on the display is possible, although not recommended (major PITA), in general SSHing or using git is a better idea
 
 2. Install Dependencies
 	2.1 Install OpenCV (https://docs.opencv.org/3.1.0/d7/d9f/tutorial_linux_install.html)
@@ -41,7 +41,7 @@
 		sudo make install
 		sudo ldconfig
 	
-	2.3 Install libGPS:
+	2.3 Install libGPS (Maybe not needed until gps functionality is checked):
 		apt-get install libgps-dev
 
 	2.4 (?) Install WiringPi
