@@ -1,4 +1,4 @@
-1. Set up working environment (Could be skipped if HDMI display is used (recommended))
+1. Set up working environment
 	1.1 Connect external HDMI monitor
 
 	1.2 Load NOOBS (V2.9) on SD card
