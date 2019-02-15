@@ -70,3 +70,5 @@ CV stuff
 https://docs.opencv.org/2.4/doc/tutorials/imgproc/shapedescriptors/find_contours/find_contours.html 
 http://mftp.mmcheng.net/Papers/DenseCut.pdf
 https://docs.opencv.org/3.1.0/d7/d4d/tutorial_py_thresholding.html
+
+Feature matching: https://se.mathworks.com/help/vision/examples/object-detection-in-a-cluttered-scene-using-point-feature-matching.html
